@@ -10,7 +10,7 @@ while contador < 3:
     preco = float(input('Informe o preço da mercadoria: '))
     reajuste = float(input('Informe o reajuste do preco em (%):'))
     # Tratamento de erro
-    if preco <= 0 or reajuste < 0:
+    if preco <= 0:
       print('ERRO: Dados de entrada')
     else:
       contador += 1
