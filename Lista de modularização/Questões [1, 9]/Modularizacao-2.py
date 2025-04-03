@@ -1,4 +1,5 @@
 # CRIAR A FUNÇÃO AQUI:
+# CRIAR A FUNÇÃO AQUI:
 def lerNumero(numero, opcao):
   '''
   HELP: GUI - lerNumero (INT):
@@ -10,19 +11,16 @@ def lerNumero(numero, opcao):
   impar = 1
   while True:
     # Tratamento de exceção
-    try:
-        if opcao == 0:
-          for contador in range (1, numero + 1):
-            if contador % 2 == 0:
-              par *= contador
-          return par
-        elif opcao == 1:
-          for contador in range (1, numero + 1):
-            if contador % 2 != 0:
-              impar *= contador
-          return impar
-    except Exception as erro:
-        print(f'ERRO DE EXCEÇÃO: {erro}')
+    if opcao == 0:
+      for contador in range (1, numero + 1):
+        if contador % 2 == 0:
+          par *= contador
+      return par
+    elif opcao == 1:
+      for contador in range (1, numero + 1):
+        if contador % 2 != 0:
+          impar *= contador
+      return impar
 
 # MENU: REUSABILIDADE
 contador = 0  # Enumerar
