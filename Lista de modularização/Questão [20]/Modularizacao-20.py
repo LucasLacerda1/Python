@@ -30,6 +30,7 @@ while True:
         if num_dependente < 0:
           print('ERRO: dados de entrada!')
         else:
+          contador += 1
           salario, desconto_total = contracheque(salario_bruto, num_dependente)
           print(f'Seu salário liquido é de R${salario:.2f}, foi descontado dele R${desconto_total:.2f}.')
   except Exception as erro:
