@@ -1,5 +1,4 @@
 # CRIAR A FUNÇÃO AQUI:
-# CRIAR A FUNÇÃO AQUI:
 def lerNumero(numero, opcao):
   '''
   HELP: GUI - lerNumero (INT):
