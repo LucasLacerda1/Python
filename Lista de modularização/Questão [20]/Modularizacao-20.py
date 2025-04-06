@@ -16,22 +16,28 @@ while True:
     print('Digite [1] para calcular o contracheque.')
     print('Digite [0] para sair do programa.')
     opcao = int(input(''))
+    # Tratamento de erro
     if opcao < 0 or opcao > 1:
       print('ERRO: dados de entrada')
     elif opcao == 0:
       print('Programa finalizado!')
-      break
+      break # Quebra do código
     else:
+      # Entrada de dados
       salario_bruto = float(input(f'{contador + 1}º Funcionário, informe seu salário bruto: '))
+      # Tratamento de erro
       if salario_bruto < 0.00:
         print('ERRO: o salário deve ser acima de 0!')
       else:
+        # Entrada de dados
         num_dependente = int(input('Informe quantos dependentes você tem (Esposa + filhos): '))
+        # Tratamento de erro
         if num_dependente < 0:
           print('ERRO: dados de entrada!')
         else:
           contador += 1
           salario, desconto_total = contracheque(salario_bruto, num_dependente)
+          # Resultado
           print(f'Seu salário liquido é de R${salario:.2f}, foi descontado dele R${desconto_total:.2f}.')
   except Exception as erro:
     print(f'ERRO DE EXCEÇÃO: {erro}')
