@@ -1,3 +1,4 @@
+# CRIAR / RESETAR LISTAS
 import numpy
 
 funcionarios = []
@@ -20,7 +21,7 @@ def LerCargo():
   while True:
     try:
       cargo = input('Informe seu cargo: ')
-      if len(cargo < 3):
+      if len(cargo) < 3:
         print('ERRO: Informe novamente.')
       else:
         break
@@ -35,22 +36,11 @@ def SortMat():
   mat = [valor for valor in (numpy.random.normal(mean, std, size))]
   return mat
 
-def LerPlano():
-  while True:
-    try:
-      opcao = int(input('Digite [1] se você possui plano de saúde, digite [2] se você não possui: '))
-      if opcao < 1 or opcao > 2:
-        print('ERRO: Informe novamente.')
-      else:
-        if opcao == 1:
-          plano = 'Possui plano'
-          break
-        else:
-          plano = 'Não possui plano'
-          break
-    except:
-      print('ERRO: Informe novamente.')
-  return plano
+def LerPlano(plano):
+  if plano == 1:
+    return 1
+  else:
+    return 0
 
 def LerSalario():
   while True:
@@ -75,16 +65,43 @@ while True:
       print('FIM DO PROGRAMA')
       break
     else:
-      # INSERIR DADOS DO ALUNO:
-      print(f'Entre com os dados do {len(empresa) + 1}º funcionário: ')
-      nome = LerNome()
-      mat = SortMat()
-      plano = LerPlano()
-      salario = LerSalario()
-      # LISTA DE LISTAS:
-      funcionarios = [nome, mat, plano, salario]
-      empresa.append(funcionarios)
-      print('Funcionário cadastrado com sucesso.')
+      print('Digite [1] se você possui um plano de saúde.')
+      print('Digite [0] se você não possui um plano de saúde.')
+      plano = int(input(''))
+      if plano > 1 or plano < 0:
+        print('ERRO: Digite apenas uma das duas opções apresentadas!')
+      else:
+        # INSERIR DADOS DO ALUNO:
+        print(f'Entre com os dados do {len(empresa) + 1}º funcionário: ')
+        nome = LerNome()
+        cargo = LerCargo()
+        mat = SortMat()
+        plano_saude = LerPlano(plano)
+        salario = LerSalario()
+        # LISTA DE LISTAS:
+        funcionarios = [nome, cargo, mat, plano_saude, salario]
+        empresa.append(funcionarios)
   except Exception as ERRO_EXCECAO:
     print(f'ERRO DE EXCEÇÃO: {ERRO_EXCECAO}')
     break
+
+# Relatórios:
+total_plano = [funcionarios for funcionarios in empresa if funcionarios[3] == 1]
+percentual = (len(total_plano) / len(empresa)) * 100
+print(f'Taxa de adesão ao plano de saúde: {percentual:.2f}%')
+
+nome_plano = [funcionarios for funcionarios in empresa if funcionarios[3] == 1]
+for valor in nome_plano:
+  print(f'Nome dos funcionários que tem plano de saúde: {valor[0]}')
+
+cargo_salario = [funcionarios[4] for funcionarios in empresa]
+media_cargo = (sum(cargo_salario) / len(empresa))
+for valor in empresa:
+  if valor[4] > media_cargo: 
+    print(f'{valor[0]} que está no cargo de {valor [1]}, ganha mais que a média.')
+
+folha = [funcionarios[4] for funcionarios in empresa]
+bruto = sum(folha)
+liquido = bruto - (212.54 * len(total_plano))
+print(f'Folha de pagamento Bruta (Sem desconto do(s) plano(s) de saúde): R${bruto: .2f}')
+print(f'Folha de pagamento Líquida (Com desconto do(s) plano(s) de saúde): R${liquido: .2f}')
