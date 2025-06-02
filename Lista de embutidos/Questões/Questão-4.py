@@ -22,7 +22,10 @@ def LerConta():
   while True:
     try:
       conta = int(input('Informe o número da conta de 1 a 99.999: '))
-      if conta < 1 or conta > 99999:
+      valid_acount = [valor[1] for valor in banco]
+      if conta in valid_acount:
+        print('Já existe uma conta com esse número.')
+      elif conta < 1 or conta > 99999:
         print('ERRO: Informe o número da conta novamente (1 a 99.999)!!')
       else:
         break
@@ -109,5 +112,6 @@ while True:
       else:
         print('Fim do programa')
         break
-    except Exception as ERRO:
-      print(f'ERRO: {ERRO}')
+    except Exception:
+      print('Fim do programa')
+      break
