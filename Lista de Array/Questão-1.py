@@ -1,6 +1,6 @@
 import numpy as np
 
-Arquivo: https://drive.google.com/file/d/1oSBBXrNH2waKvz06GLwMmjY0O4Og2WID/view
+arquivo: https://drive.google.com/file/d/1oSBBXrNH2waKvz06GLwMmjY0O4Og2WID/view
 
 dataset1 = np.load('dataset1.npy')
 
