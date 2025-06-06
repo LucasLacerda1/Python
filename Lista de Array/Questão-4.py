@@ -1,5 +1,9 @@
 import numpy as np
 
+arquivo = https://drive.google.com/file/d/1kvC8gYRcmZnvG2XMaFRuMs-rIolu_gAv/view
+
+dataset4 = np.load('dataset4.npy')
+
 ''' Letra A)
 Exibir na Tela (Precisão de uma (1) casa decimal: .1f): Média Individual, 1° Bimestre, 2° Bimestre, Semestral e Final (após a Prova Final).
 
